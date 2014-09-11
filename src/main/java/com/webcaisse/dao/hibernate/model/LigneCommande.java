@@ -1,6 +1,17 @@
 package com.webcaisse.dao.hibernate.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="cdes_lines")
 public class LigneCommande {
 	
 	private Long id;
@@ -13,7 +24,7 @@ public class LigneCommande {
 	
 	private String notes;
 	
-	private Boolean offerts ;
+	private Boolean offert ;
 	
 	private Double prix ;
 	
@@ -23,6 +34,10 @@ public class LigneCommande {
 	
 	private Produit produit;
 
+	@Id
+	@GenericGenerator(name="id_line" , strategy="increment")
+	@GeneratedValue(generator="id_line")
+	@Column(name="id_line")
 	public Long getId() {
 		return id;
 	}
@@ -31,6 +46,7 @@ public class LigneCommande {
 		this.id = id;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Commande getCommande() {
 		return commande;
 	}
@@ -39,6 +55,7 @@ public class LigneCommande {
 		this.commande = commande;
 	}
 
+	@Column(name="format", nullable=true)
 	public String getFormat() {
 		return format;
 	}
@@ -47,6 +64,7 @@ public class LigneCommande {
 		this.format = format;
 	}
 
+	@Column(name="details", nullable=true)
 	public String getDetails() {
 		return details;
 	}
@@ -54,7 +72,8 @@ public class LigneCommande {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-
+	
+	@Column(name="notes", nullable=true)
 	public String getNotes() {
 		return notes;
 	}
@@ -63,14 +82,16 @@ public class LigneCommande {
 		this.notes = notes;
 	}
 
-	public Boolean getOfferts() {
-		return offerts;
+	@Column(name="offert", nullable=true)
+	public Boolean getOffert() {
+		return offert;
 	}
 
-	public void setOfferts(Boolean offerts) {
-		this.offerts = offerts;
+	public void setOffert(Boolean offerts) {
+		this.offert = offerts;
 	}
 
+	@Column(name="prix", nullable=true)
 	public Double getPrix() {
 		return prix;
 	}
@@ -78,7 +99,8 @@ public class LigneCommande {
 	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
-
+	
+	@Column(name="qte", nullable=true)
 	public Double getQte() {
 		return qte;
 	}
@@ -87,6 +109,7 @@ public class LigneCommande {
 		this.qte = qte;
 	}
 
+	@Column(name="total", nullable=true)
 	public Double getTotale() {
 		return totale;
 	}
@@ -95,6 +118,7 @@ public class LigneCommande {
 		this.totale = totale;
 	}
 	
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Produit getProduit() {
 		return produit;
 	}
@@ -102,7 +126,4 @@ public class LigneCommande {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-	
-	
-	
 }

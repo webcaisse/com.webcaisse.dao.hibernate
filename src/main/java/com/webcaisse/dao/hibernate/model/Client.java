@@ -2,9 +2,21 @@ package com.webcaisse.dao.hibernate.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="clients")
 public class Client {
 
-	private Long id;
+	private Long id; 
 	
 	private Societe societe ;
 	
@@ -42,6 +54,10 @@ public class Client {
 	
 	private String zone;
 
+	@Id
+	@GenericGenerator(name="id_client" , strategy="increment")
+	@GeneratedValue(generator="id_client")
+	@Column(name="id_client")
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +66,7 @@ public class Client {
 		this.id = id;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}
@@ -58,6 +75,7 @@ public class Client {
 		this.societe = societe;
 	}
 
+	@Column(name="code1", nullable=true)
 	public String getCode1() {
 		return code1;
 	}
@@ -66,6 +84,7 @@ public class Client {
 		this.code1 = code1;
 	}
 
+	@Column(name="code2", nullable=true)
 	public String getCode2() {
 		return code2;
 	}
@@ -74,6 +93,7 @@ public class Client {
 		this.code2 = code2;
 	}
 
+	@Column(name="code3", nullable=true)
 	public String getCode3() {
 		return code3;
 	}
@@ -82,6 +102,7 @@ public class Client {
 		this.code3 = code3;
 	}
 
+	@Column(name="cp", nullable=true)
 	public String getCodePostale() {
 		return codePostale;
 	}
@@ -89,7 +110,8 @@ public class Client {
 	public void setCodePostale(String codePostale) {
 		this.codePostale = codePostale;
 	}
-
+	
+	@Column(name="date_creat", nullable=true)
 	public Date getDateCreation() {
 		return dateCreation;
 	}
@@ -97,7 +119,8 @@ public class Client {
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-
+	
+	@Column(name="etage", nullable=true)
 	public Integer getEtage() {
 		return etage;
 	}
@@ -106,6 +129,7 @@ public class Client {
 		this.etage = etage;
 	}
 
+	@Column(name="immeuble", nullable=true)
 	public String getImmeuble() {
 		return immeuble;
 	}
@@ -113,7 +137,8 @@ public class Client {
 	public void setImmeuble(String immeuble) {
 		this.immeuble = immeuble;
 	}
-
+		
+	@Column(name="interphone", nullable=true)
 	public String getInterphone() {
 		return interphone;
 	}
@@ -121,7 +146,8 @@ public class Client {
 	public void setInterphone(String interphone) {
 		this.interphone = interphone;
 	}
-
+	
+	@Column(name="nom", nullable=true)
 	public String getNom() {
 		return nom;
 	}
@@ -130,6 +156,7 @@ public class Client {
 		this.nom = nom;
 	}
 
+	@Column(name="prenom", nullable=true)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -137,7 +164,8 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
+	
+	@Column(name="nom_voie", nullable=true)
 	public String getNomVoie() {
 		return nomVoie;
 	}
@@ -146,6 +174,7 @@ public class Client {
 		this.nomVoie = nomVoie;
 	}
 
+	@Column(name="num_rue", nullable=true)
 	public String getNumeroRue() {
 		return numeroRue;
 	}
@@ -154,6 +183,7 @@ public class Client {
 		this.numeroRue = numeroRue;
 	}
 
+	@Column(name="notes_livreur", nullable=true)
 	public String getNotes() {
 		return notes;
 	}
@@ -161,7 +191,8 @@ public class Client {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
+	
+	@Column(name="pts", nullable=true)
 	public Long getPoints() {
 		return points;
 	}
@@ -170,6 +201,7 @@ public class Client {
 		this.points = points;
 	}
 
+	@Column(name="telephone", nullable=true)
 	public String getTelephone() {
 		return telephone;
 	}
@@ -177,7 +209,8 @@ public class Client {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
+	
+	@Column(name="ville", nullable=true)
 	public String getVille() {
 		return ville;
 	}
@@ -185,7 +218,8 @@ public class Client {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
+	
+	@Column(name="zone", nullable=true)
 	public String getZone() {
 		return zone;
 	}

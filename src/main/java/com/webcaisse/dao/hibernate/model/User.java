@@ -1,5 +1,17 @@
 package com.webcaisse.dao.hibernate.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="users")
 public class User {
 
 	private Integer id;
@@ -18,6 +30,10 @@ public class User {
 
 	private Societe societe ;
 	
+	@Id
+	@GenericGenerator(name="id_societe" , strategy="increment")
+	@GeneratedValue(generator="id_societe")
+	@Column(name="id_societe")
 	public Integer getId() {
 		return id;
 	}
@@ -26,6 +42,7 @@ public class User {
 		this.id = id;
 	}
 
+	@Column(name="actif", nullable=true)
 	public Boolean getActif() {
 		return actif;
 	}
@@ -34,6 +51,7 @@ public class User {
 		this.actif = actif;
 	}
 
+	@Column(name="adresse", nullable=true)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -42,6 +60,7 @@ public class User {
 		this.adresse = adresse;
 	}
 
+	@Column(name="code", nullable=true)
 	public String getCodeAcces() {
 		return codeAcces;
 	}
@@ -50,6 +69,7 @@ public class User {
 		this.codeAcces = codeAcces;
 	}
 
+	@Column(name="nom", nullable=true)
 	public String getNom() {
 		return nom;
 	}
@@ -58,6 +78,7 @@ public class User {
 		this.nom = nom;
 	}
 
+	@Column(name="prenom", nullable=true)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -66,6 +87,7 @@ public class User {
 		this.prenom = prenom;
 	}
 
+	@Column(name="telephone_portable", nullable=true)
 	public String getTelephone() {
 		return telephone;
 	}
@@ -74,6 +96,7 @@ public class User {
 		this.telephone = telephone;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}

@@ -2,8 +2,19 @@ package com.webcaisse.dao.hibernate.model;
 
 import java.util.Date;
 
-public class Commande {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="cdes")
+public class Commande {
 	
 	private Long id;
 	
@@ -35,6 +46,10 @@ public class Commande {
 	
 	private Double regTicketRestau;
 
+	@Id
+	@GenericGenerator(name="id_cde" , strategy="increment")
+	@GeneratedValue(generator="id_cde")
+	@Column(name="id_cde")
 	public Long getId() {
 		return id;
 	}
@@ -43,6 +58,7 @@ public class Commande {
 		this.id = id;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Client getClient() {
 		return client;
 	}
@@ -50,7 +66,8 @@ public class Commande {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Session getSession() {
 		return session;
 	}
@@ -59,6 +76,7 @@ public class Commande {
 		this.session = session;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}
@@ -66,7 +84,8 @@ public class Commande {
 	public void setSociete(Societe societe) {
 		this.societe = societe;
 	}
-
+	
+	@Column(name="commentaire", nullable=true)
 	public String getCommentaire() {
 		return commentaire;
 	}
@@ -74,7 +93,8 @@ public class Commande {
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-
+	
+	@Column(name="date_cde", nullable=true)
 	public Date getDateCommande() {
 		return dateCommande;
 	}
@@ -82,7 +102,8 @@ public class Commande {
 	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
-
+	
+	@Column(name="date_prevue", nullable=true)
 	public Date getDatePrevue() {
 		return datePrevue;
 	}
@@ -91,6 +112,7 @@ public class Commande {
 		this.datePrevue = datePrevue;
 	}
 
+	@Column(name="mode", nullable=true)
 	public String getMode() {
 		return mode;
 	}
@@ -98,7 +120,8 @@ public class Commande {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-
+	
+	@Column(name="montant", nullable=true)
 	public Double getMontant() {
 		return montant;
 	}
@@ -107,6 +130,7 @@ public class Commande {
 		this.montant = montant;
 	}
 
+	@Column(name="paye", nullable=true)
 	public Boolean getPaye() {
 		return paye;
 	}
@@ -115,6 +139,7 @@ public class Commande {
 		this.paye = paye;
 	}
 
+	@Column(name="reg_ch", nullable=true)
 	public Double getRegCheque() {
 		return regCheque;
 	}
@@ -122,7 +147,8 @@ public class Commande {
 	public void setRegCheque(Double regCheque) {
 		this.regCheque = regCheque;
 	}
-
+	
+	@Column(name="reg_cb", nullable=true)
 	public Double getRegCB() {
 		return regCB;
 	}
@@ -131,6 +157,7 @@ public class Commande {
 		this.regCB = regCB;
 	}
 
+	@Column(name="reg_esp", nullable=true)
 	public Double getRegEspece() {
 		return regEspece;
 	}
@@ -139,6 +166,7 @@ public class Commande {
 		this.regEspece = regEspece;
 	}
 
+	@Column(name="reg_fi", nullable=true)
 	public Double getRegCarteFidelite() {
 		return regCarteFidelite;
 	}
@@ -146,7 +174,8 @@ public class Commande {
 	public void setRegCarteFidelite(Double regCarteFidelite) {
 		this.regCarteFidelite = regCarteFidelite;
 	}
-
+	
+	@Column(name="reg_tr", nullable=true)
 	public Double getRegTicketRestau() {
 		return regTicketRestau;
 	}
@@ -154,7 +183,4 @@ public class Commande {
 	public void setRegTicketRestau(Double regTicketRestau) {
 		this.regTicketRestau = regTicketRestau;
 	}
-	
-	
-	
 }

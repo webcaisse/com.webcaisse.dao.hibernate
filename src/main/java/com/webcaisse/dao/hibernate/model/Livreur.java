@@ -1,5 +1,18 @@
 package com.webcaisse.dao.hibernate.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+
+@Entity
+@Table(name="livreurs")
 public class Livreur {
 
 	
@@ -17,6 +30,10 @@ public class Livreur {
 	
 	private String telephone ;
 
+	@Id
+	@GenericGenerator(name="id_livreur" , strategy="increment")
+	@GeneratedValue(generator="id_livreur")
+	@Column(name="id_livreur")
 	public Long getId() {
 		return id;
 	}
@@ -25,6 +42,7 @@ public class Livreur {
 		this.id = id;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}
@@ -33,6 +51,7 @@ public class Livreur {
 		this.societe = societe;
 	}
 
+	@Column(name="adresse", nullable=true)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -40,7 +59,8 @@ public class Livreur {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-
+	
+	@Column(name="nom", nullable=true)
 	public String getNom() {
 		return nom;
 	}
@@ -49,6 +69,7 @@ public class Livreur {
 		this.nom = nom;
 	}
 
+	@Column(name="prenom", nullable=true)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -57,6 +78,7 @@ public class Livreur {
 		this.prenom = prenom;
 	}
 
+	@Column(name="nss", nullable=true)
 	public String getNss() {
 		return nss;
 	}
@@ -65,6 +87,7 @@ public class Livreur {
 		this.nss = nss;
 	}
 
+	@Column(name="portable", nullable=true)
 	public String getTelephone() {
 		return telephone;
 	}
@@ -72,7 +95,5 @@ public class Livreur {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
-	
 	
 }

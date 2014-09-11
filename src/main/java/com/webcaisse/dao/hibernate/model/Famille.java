@@ -1,5 +1,17 @@
 package com.webcaisse.dao.hibernate.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="familles")
 public class Famille {
 
 	private Long id;
@@ -8,6 +20,10 @@ public class Famille {
 	
 	private Societe societe ;
 
+	@Id
+	@GenericGenerator(name="id_famille" , strategy="increment")
+	@GeneratedValue(generator="id_famille")
+	@Column(name="id_famille")
 	public Long getId() {
 		return id;
 	}
@@ -16,6 +32,7 @@ public class Famille {
 		this.id = id;
 	}
 
+	@Column(name="libelle", nullable=true)
 	public String getLibelle() {
 		return libelle;
 	}
@@ -24,6 +41,7 @@ public class Famille {
 		this.libelle = libelle;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}
@@ -31,6 +49,4 @@ public class Famille {
 	public void setSociete(Societe societe) {
 		this.societe = societe;
 	} 
-	
-	
 }

@@ -2,6 +2,18 @@ package com.webcaisse.dao.hibernate.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="session")
 public class Session {
 
 	private Long id;
@@ -18,6 +30,11 @@ public class Session {
 	
 	private User user ;
 
+	
+	@Id
+	@GenericGenerator(name="id_session" , strategy="increment")
+	@GeneratedValue(generator="id_session")
+	@Column(name="id_session")
 	public Long getId() {
 		return id;
 	}
@@ -26,6 +43,7 @@ public class Session {
 		this.id = id;
 	}
 
+	@Column(name="chiffre_aff", nullable=true)
 	public Double getChiffreAffaire() {
 		return chiffreAffaire;
 	}
@@ -34,6 +52,7 @@ public class Session {
 		this.chiffreAffaire = chiffreAffaire;
 	}
 
+	@Column(name="date_fermeture", nullable=true)
 	public Date getDateFermeture() {
 		return dateFermeture;
 	}
@@ -42,6 +61,7 @@ public class Session {
 		this.dateFermeture = dateFermeture;
 	}
 
+	@Column(name="date_ouverture", nullable=true)
 	public Date getDataOuverture() {
 		return dataOuverture;
 	}
@@ -50,6 +70,7 @@ public class Session {
 		this.dataOuverture = dataOuverture;
 	}
 
+	@Column(name="etat", nullable=true)
 	public Character getEtat() {
 		return etat;
 	}
@@ -58,6 +79,7 @@ public class Session {
 		this.etat = etat;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Societe getSociete() {
 		return societe;
 	}
@@ -66,6 +88,7 @@ public class Session {
 		this.societe = societe;
 	}
 
+	@ManyToOne(cascade = CascadeType.ALL)
 	public User getUser() {
 		return user;
 	}
@@ -73,6 +96,5 @@ public class Session {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 	
 }
