@@ -31,6 +31,11 @@
 			<version>2.2.0</version>
 		</dependency>
 		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>3.2.11.RELEASE</version>
@@ -50,4 +55,5 @@
 		</dependency>
 
 	</dependencies>
+	<version>0.0.3-SNAPSHOT</version>
 </project>

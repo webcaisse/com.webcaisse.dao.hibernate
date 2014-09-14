@@ -9,7 +9,7 @@
 
 	<context:property-placeholder location="classpath:persistence-mysql.properties" />
 
-	<bean id="sessionFactory"
+	<bean name="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.webcaisse.dao.hibernate.model" />
@@ -17,6 +17,7 @@
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
 			</props>
 		</property>
 	</bean>

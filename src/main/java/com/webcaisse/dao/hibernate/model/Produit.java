@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -22,7 +23,7 @@ public class Produit {
 	
 	private String libelle;
 	
-//	private List<Prix> prix ;
+	private List<Prix> prix ;
 	
 	private Integer qteStock;
 	
@@ -30,6 +31,7 @@ public class Produit {
 	
 	private Famille famille;
 
+	private Menu menu ;
 	
 	@Id
 	@GenericGenerator(name="id_produit" , strategy="increment")
@@ -61,13 +63,14 @@ public class Produit {
 		this.libelle = libelle;
 	}
 
-//	public List<Prix> getPrix() {
-//		return prix;
-//	}
-//
-//	public void setPrix(List<Prix> prix) {
-//		this.prix = prix;
-//	}
+	@OneToMany(mappedBy="produit")
+	public List<Prix> getPrix() {
+		return prix;
+	}
+
+	public void setPrix(List<Prix> prix) {
+		this.prix = prix;
+	}
 
 	@Column(name="qte", nullable=true)
 	public Integer getQteStock() {
@@ -95,5 +98,15 @@ public class Produit {
 	public void setFamille(Famille famille) {
 		this.famille = famille;
 	}
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
 	
 }
