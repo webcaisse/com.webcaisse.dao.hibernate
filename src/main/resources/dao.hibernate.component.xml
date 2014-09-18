@@ -6,8 +6,9 @@
       http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context.xsd">
-
 	<context:annotation-config/>
 	
-	<context:component-scan base-package="com.webcaisse.dao.hibernate" />
-</beans>
+	<context:component-scan base-package="com.webcaisse.dao.hibernate.impl" />
+ 
+ <bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao"></bean>
+ </beans>
