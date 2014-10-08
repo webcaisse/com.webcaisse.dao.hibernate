@@ -16,6 +16,12 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.webcaisse.dao.hibernate</groupId>
+			<artifactId>com.webcaisse.dao.hibernate</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -25,7 +31,8 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			</dependency>
+			<version>3.2.11.RELEASE</version>
+		</dependency>
 
 
 		<dependency>
