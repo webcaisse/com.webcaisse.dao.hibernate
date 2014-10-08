@@ -9,4 +9,5 @@ public interface IProductDao {
 
 	public List<Famille> getFamillies ();
 	public Long ajouterProduit(Produit p, Long idMenu) ;
+	public List<Produit> getProductsByFamilly (Long familleId);
 }

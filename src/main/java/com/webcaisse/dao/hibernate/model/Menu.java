@@ -17,7 +17,7 @@ public class Menu {
 
 	private Long id;
 	
-	private List<Produit> produits;
+	//private List<Produit> produits;
 
 	@Id
 	@GenericGenerator(name="id_menu" , strategy="increment")
@@ -31,13 +31,15 @@ public class Menu {
 		this.id = id;
 	}
 
-	@OneToMany(mappedBy="menu")
-	public List<Produit> getProduits() {
-		return produits;
-	}
-
-	public void setProduits(List<Produit> produits) {
-		this.produits = produits;
-	}
+//	@OneToMany(mappedBy="menu")
+//	public List<Produit> getProduits() {
+//		return produits;
+//	}
+//
+//	public void setProduits(List<Produit> produits) {
+//		this.produits = produits;
+//	}
+	
+	//TODO a decommenter plutard 
 	
 }

@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,8 +21,6 @@ public class Produit {
 
 	private Long id;
 	
-	private Societe societe;
-	
 	private String libelle;
 	
 	private List<Prix> prix ;
@@ -31,7 +31,7 @@ public class Produit {
 	
 	private Famille famille;
 
-	private Menu menu ;
+//	private Menu menu ;
 	
 	@Id
 	@GenericGenerator(name="id_produit" , strategy="increment")
@@ -45,14 +45,6 @@ public class Produit {
 		this.id = id;
 	}
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Societe getSociete() {
-		return societe;
-	}
-
-	public void setSociete(Societe societe) {
-		this.societe = societe;
-	}
 
 	@Column(name="libelle", nullable=true)
 	public String getLibelle() {
@@ -63,7 +55,7 @@ public class Produit {
 		this.libelle = libelle;
 	}
 
-	@OneToMany(mappedBy="produit")
+	@OneToMany(mappedBy="produit", fetch= FetchType.EAGER)
 	public List<Prix> getPrix() {
 		return prix;
 	}
@@ -91,6 +83,7 @@ public class Produit {
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_famille")
 	public Famille getFamille() {
 		return famille;
 	}
@@ -99,14 +92,15 @@ public class Produit {
 		this.famille = famille;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Menu getMenu() {
-		return menu;
-	}
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	public Menu getMenu() {
+//		return menu;
+//	}
+//
+//	public void setMenu(Menu menu) {
+//		this.menu = menu;
+//	}
 
-	public void setMenu(Menu menu) {
-		this.menu = menu;
-	}
-
+	//TODO a faire lors de la gestion des menus 
 	
 }
