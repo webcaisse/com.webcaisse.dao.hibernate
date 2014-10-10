@@ -50,6 +50,14 @@ public class ProductDao  implements IProductDao{
 		    req.setParameter("x", familleId) ;
 		    return req.list() ;
 	}
+	@Transactional
+	public Produit loadProductById(Long produitId) {
+		
+		 Query req = sessionFactory.getCurrentSession().createQuery("select p from Produit p where p.id=:id " ) ;
+		 req.setParameter("id", produitId) ;
+		 return (Produit) req.uniqueResult() ;
+		
+	}
 	 
 	 
 	
