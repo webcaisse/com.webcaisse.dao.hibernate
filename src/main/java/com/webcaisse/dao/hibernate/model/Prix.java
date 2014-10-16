@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -41,7 +42,7 @@ public class Prix {
 		this.prix = prix;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_produit")
 	public Produit getProduit() {
 		return produit;
