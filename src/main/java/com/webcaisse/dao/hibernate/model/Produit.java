@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -31,20 +32,9 @@ public class Produit {
 	
 	private Famille famille;
 	
-	private Panier panier  ;
-
-//	private Menu menu ;
 	
+
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Panier getPanier() {
-		return panier;
-	}
-
-	public void setPanier(Panier panier) {
-		this.panier = panier;
-	}
-
 	@Id
 	@GenericGenerator(name="id_produit" , strategy="increment")
 	@GeneratedValue(generator="id_produit")

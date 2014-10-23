@@ -11,8 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webcaisse.dao.hibernate.IProductDao;
 import com.webcaisse.dao.hibernate.model.Famille;
-import com.webcaisse.dao.hibernate.model.Menu;
-import com.webcaisse.dao.hibernate.model.Panier;
+
 import com.webcaisse.dao.hibernate.model.Produit;
 
 
@@ -61,17 +60,18 @@ public class ProductDao  implements IProductDao{
 		
 	}
 	 
-	@Transactional
-	public Panier ajouterProduitAuPanier(Produit p, Long idPanier) {
-		
-		Panier panier = (Panier) sessionFactory.getCurrentSession().load(Panier.class,idPanier) ;
-		p.setPanier(panier);
-		panier.getProduits().add(p) ;
-		sessionFactory.getCurrentSession().save(p) ;
-		
-		
-		return panier ;
-	}
+//	@Transactional
+//	public Panier ajouterProduitAuPanier(Produit p, Long idPanier) {
+//		
+//		Panier panier = (Panier) sessionFactory.getCurrentSession().load(Panier.class,idPanier) ;
+//		p.getLibelle();
+//		p.getPrix();
+//		panier.getProduits().add(p) ;
+//		sessionFactory.getCurrentSession().save(panier) ;
+//		
+//		
+//		return panier ;
+//	}
 	 
 	
 	
