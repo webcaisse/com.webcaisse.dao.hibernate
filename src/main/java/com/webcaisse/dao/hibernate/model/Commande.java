@@ -1,13 +1,17 @@
 package com.webcaisse.dao.hibernate.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -45,6 +49,8 @@ public class Commande {
 	private Double regCarteFidelite;
 	
 	private Double regTicketRestau;
+	
+	private List<LigneCommande> ligneCommandes;
 
 	@Id
 	@GenericGenerator(name="id_cde" , strategy="increment")
@@ -58,7 +64,8 @@ public class Commande {
 		this.id = id;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name="id_client")
 	public Client getClient() {
 		return client;
 	}
@@ -68,6 +75,7 @@ public class Commande {
 	}
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_session")
 	public Session getSession() {
 		return session;
 	}
@@ -76,7 +84,8 @@ public class Commande {
 		this.session = session;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name="id_societe")
 	public Societe getSociete() {
 		return societe;
 	}
@@ -183,4 +192,15 @@ public class Commande {
 	public void setRegTicketRestau(Double regTicketRestau) {
 		this.regTicketRestau = regTicketRestau;
 	}
+
+	@OneToMany(mappedBy="commande", fetch= FetchType.EAGER)
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+	
+	
 }

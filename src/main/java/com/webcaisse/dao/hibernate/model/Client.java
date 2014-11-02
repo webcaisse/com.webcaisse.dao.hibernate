@@ -1,6 +1,7 @@
 package com.webcaisse.dao.hibernate.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -53,7 +55,7 @@ public class Client {
 	private String ville ;
 	
 	private String zone;
-
+	
 	@Id
 	@GenericGenerator(name="id_client" , strategy="increment")
 	@GeneratedValue(generator="id_client")
@@ -227,6 +229,5 @@ public class Client {
 	public void setZone(String zone) {
 		this.zone = zone;
 	}
-	
 	
 }

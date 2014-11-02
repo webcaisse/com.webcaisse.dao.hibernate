@@ -28,7 +28,7 @@ public class LigneCommande {
 	
 	private Double prix ;
 	
-	private Double qte;
+	private Integer qte;
 	
 	private Double totale;
 	
@@ -101,12 +101,12 @@ public class LigneCommande {
 	}
 	
 	@Column(name="qte", nullable=true)
-	public Double getQte() {
+	public Integer getQte() {
 		return qte;
 	}
 
-	public void setQte(Double qte) {
-		this.qte = qte;
+	public void setQte(Integer integer) {
+		this.qte = integer;
 	}
 
 	@Column(name="total", nullable=true)

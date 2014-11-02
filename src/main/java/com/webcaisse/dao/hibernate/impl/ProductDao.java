@@ -10,8 +10,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webcaisse.dao.hibernate.IProductDao;
+import com.webcaisse.dao.hibernate.model.Commande;
 import com.webcaisse.dao.hibernate.model.Famille;
-
+import com.webcaisse.dao.hibernate.model.LigneCommande;
 import com.webcaisse.dao.hibernate.model.Produit;
 
 
@@ -58,6 +59,17 @@ public class ProductDao  implements IProductDao{
 		 req.setParameter("id", produitId) ;
 		 return (Produit) req.uniqueResult() ;
 		
+	}
+
+	
+	@Transactional
+	public Long sauvegarderCommande(Commande commande) {
+	
+			
+		return (Long) sessionFactory.getCurrentSession().save(commande) ;
+		 /**
+		  * l'id retourner a reverifer apres
+		  */
 	}
 	 
 //	@Transactional

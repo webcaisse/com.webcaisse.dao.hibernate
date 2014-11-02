@@ -7,7 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -80,6 +82,7 @@ public class Session {
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_societe")
 	public Societe getSociete() {
 		return societe;
 	}
@@ -88,7 +91,8 @@ public class Session {
 		this.societe = societe;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_user")
 	public User getUser() {
 		return user;
 	}
