@@ -23,10 +23,11 @@ public class ProductDao  implements IProductDao{
 
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Famille> getFamillies (){
-		List<Famille>  familles = sessionFactory.getCurrentSession().createCriteria(Famille.class).list();
+	public List<Famille> getFamillies (Long idSociete){
 		
-		return familles;
+		 Query req = sessionFactory.getCurrentSession().createQuery("select f from Famille f where f.societe.id=:x " ) ;
+		 req.setParameter("x", idSociete) ;
+		 return req.list() ;
 	}
 	
 	@Transactional

@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="societe")
 public class Societe {
 
-	private Integer id;
+	private Long id;
 	
 	private String nom;
 	
@@ -26,11 +26,11 @@ public class Societe {
 	@GenericGenerator(name="id_societe" , strategy="increment")
 	@GeneratedValue(generator="id_societe")
 	@Column(name="id_societe")
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
