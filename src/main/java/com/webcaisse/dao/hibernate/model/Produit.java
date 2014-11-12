@@ -32,6 +32,7 @@ public class Produit {
 	
 	private Famille famille;
 	
+	private String couleur ;
 	
 
 	
@@ -93,7 +94,17 @@ public class Produit {
 	public void setFamille(Famille famille) {
 		this.famille = famille;
 	}
+	
+	@Column(name="color", nullable=true)
+	public String getCouleur() {
+		return couleur;
+	}
 
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+	
+	
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	public Menu getMenu() {
 //		return menu;
