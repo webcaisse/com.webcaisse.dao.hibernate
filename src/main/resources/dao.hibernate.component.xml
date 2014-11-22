@@ -10,6 +10,7 @@
 	
 	<context:component-scan base-package="com.webcaisse.dao.hibernate.impl" />
  
- <bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao"></bean>
+ <bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao"/>
+ <bean class="com.webcaisse.dao.hibernate.impl.SocieteDao" name="societeDao"/>
   <bean class="com.webcaisse.dao.hibernate.impl.AuthentificationDao" name="authentificationDao"></bean>
  </beans>

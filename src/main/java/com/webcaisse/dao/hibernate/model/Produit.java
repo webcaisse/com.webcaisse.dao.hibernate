@@ -85,7 +85,7 @@ public class Produit {
 		this.description = description;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_famille")
 	public Famille getFamille() {
 		return famille;

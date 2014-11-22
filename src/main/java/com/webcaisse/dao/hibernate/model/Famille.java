@@ -46,7 +46,7 @@ public class Famille {
 		this.libelle = libelle;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_societe")
 	public Societe getSociete() {
 		return societe;

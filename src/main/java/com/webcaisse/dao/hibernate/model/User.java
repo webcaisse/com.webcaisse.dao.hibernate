@@ -97,7 +97,7 @@ public class User {
 		this.telephone = telephone;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_societe", insertable=false, updatable=false)
 	public Societe getSociete() {
 		return societe;

@@ -74,7 +74,7 @@ public class Commande {
 		this.client = client;
 	}
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_session")
 	public Session getSession() {
 		return session;
@@ -193,7 +193,7 @@ public class Commande {
 		this.regTicketRestau = regTicketRestau;
 	}
 
-	@OneToMany(mappedBy="commande", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy="commande", fetch= FetchType.EAGER, cascade=CascadeType.ALL)
 	public List<LigneCommande> getLigneCommandes() {
 		return ligneCommandes;
 	}
