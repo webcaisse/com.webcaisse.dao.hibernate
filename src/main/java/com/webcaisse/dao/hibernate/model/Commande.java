@@ -50,6 +50,10 @@ public class Commande {
 	
 	private Double regTicketRestau;
 	
+	private String etat ;
+	
+	
+
 	private List<LigneCommande> ligneCommandes;
 
 	@Id
@@ -202,5 +206,12 @@ public class Commande {
 		this.ligneCommandes = ligneCommandes;
 	}
 	
-	
+	public String getEtat() {
+		return etat;
+	}
+
+	@Column(name="etat", nullable=true)
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
 }

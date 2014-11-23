@@ -12,5 +12,6 @@
  
  <bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao"/>
  <bean class="com.webcaisse.dao.hibernate.impl.SocieteDao" name="societeDao"/>
+ <bean class="com.webcaisse.dao.hibernate.impl.SessionDao" name="sessionDao"/>
   <bean class="com.webcaisse.dao.hibernate.impl.AuthentificationDao" name="authentificationDao"></bean>
  </beans>

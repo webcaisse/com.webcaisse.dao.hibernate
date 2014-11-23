@@ -24,11 +24,5 @@ public class SocieteDao implements ISocieteDao {
 		 return (Societe) req.uniqueResult() ;
 	}
 
-	@Transactional
-	public Session loadSessionById(Long sessionId) {
-		Query req = sessionFactory.getCurrentSession().createQuery("select s from Session s where s.id=:id " ) ;
-		 req.setParameter("id", sessionId) ;
-		 return (Session) req.uniqueResult() ;
-	}
-
+	
 }
