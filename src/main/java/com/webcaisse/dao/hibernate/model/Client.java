@@ -56,7 +56,10 @@ public class Client {
 	private String ville ;
 	
 	private String zone;
+	private String email ;
 	
+	
+
 	@Id
 	@GenericGenerator(name="id_client" , strategy="increment")
 	@GeneratedValue(generator="id_client")
@@ -232,4 +235,12 @@ public class Client {
 		this.zone = zone;
 	}
 	
+	@Column(name="email", nullable=true)
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
