@@ -1,5 +1,6 @@
 package com.webcaisse.dao.hibernate.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,6 +30,17 @@ public class SessionDao implements ISessionDao {
 		 Query req = sessionFactory.getCurrentSession().createQuery("select c from Commande c where c.session.id=:x " ) ;
 		    req.setParameter("x", idSession) ;
 		    return req.list() ;
+	
+	}
+
+	@Transactional
+	public List<Commande> rechercherCommandeParDate(Long idSociete, Date dateCommande) {
+		
+		 Query req = sessionFactory.getCurrentSession().createQuery("select c from Commande c where c.societe.id=:x  and c.dateCommande=:y" ) ;
+		    req.setParameter("x", idSociete) ;
+		    req.setParameter("y", dateCommande) ;
+		    return req.list() ;
+	
 	
 	}
 	

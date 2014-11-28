@@ -1,5 +1,6 @@
 package com.webcaisse.dao.hibernate;
 
+import java.util.Date;
 import java.util.List;
 
 import com.webcaisse.dao.hibernate.model.Commande;
@@ -10,5 +11,6 @@ public interface ISessionDao {
 	
 	public Session loadSessionById(Long sessionId);
 	public  List<Commande> rechercherCommande(Long idSession) ;
+	public List<Commande> rechercherCommandeParDate(Long idSociete ,Date dateCommade) ;
 	
 }
