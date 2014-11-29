@@ -34,6 +34,7 @@ public class Produit {
 	
 	private String couleur ;
 	
+	
 
 	
 	@Id

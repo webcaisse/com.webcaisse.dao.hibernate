@@ -31,7 +31,7 @@ public class ProductDao  implements IProductDao{
 	}
 	
 	@Transactional
-	public Long ajouterProduit(Produit p, Long idMenu) {
+	public Long ajouterProduit(Produit p, Long idFamilly) {
 		
 		
 //		Menu m = (Menu) sessionFactory.getCurrentSession().load(Produit.class, idMenu) ;
