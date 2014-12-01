@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -34,9 +33,9 @@ public class Produit {
 	
 	private String couleur ;
 	
+	private String code ;
 	
 
-	
 	@Id
 	@GenericGenerator(name="id_produit" , strategy="increment")
 	@GeneratedValue(generator="id_produit")
@@ -59,7 +58,7 @@ public class Produit {
 		this.libelle = libelle;
 	}
 
-	@OneToMany(mappedBy="produit", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy="produit", fetch= FetchType.EAGER, cascade=CascadeType.ALL)
 	public List<Prix> getPrix() {
 		return prix;
 	}
@@ -86,7 +85,7 @@ public class Produit {
 		this.description = description;
 	}
 
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="id_famille")
 	public Famille getFamille() {
 		return famille;
@@ -105,6 +104,15 @@ public class Produit {
 		this.couleur = couleur;
 	}
 	
+	
+	@Column(name="code", nullable=true)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	public Menu getMenu() {

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,19 +31,6 @@ public class ProductDao  implements IProductDao{
 		 return req.list() ;
 	}
 	
-	@Transactional
-	public Long ajouterProduit(Produit p, Long idFamilly) {
-		
-		
-//		Menu m = (Menu) sessionFactory.getCurrentSession().load(Produit.class, idMenu) ;
-//		//p.setMenu(m);
-//		m.getProduits().add(p);
-//		sessionFactory.getCurrentSession().save(p) ;
-		
-		// l'ajout de produits, familles, etc.. va se faire avec spring batch
-		
-		return p.getId();
-	}
 	
 	@Transactional
 	public List<Produit> getProductsByFamilly (Long familleId){
@@ -73,6 +61,29 @@ public class ProductDao  implements IProductDao{
 		  */
 	}
 	 
+	
+	@Transactional
+	public Long ajouterProduit(Produit p, Long idFamilly) {
+		
+		
+	     Famille famille = (Famille) sessionFactory.getCurrentSession().load(Famille.class, idFamilly) ;
+         p.setFamille(famille);
+         
+		return (Long)sessionFactory.getCurrentSession().save(p);
+	}
+
+
+	@Transactional
+	public void supprimerProduit(Long idProduit) {
+		
+		
+		Produit produit = (Produit) sessionFactory.getCurrentSession().get(Produit.class, idProduit) ;
+		sessionFactory.getCurrentSession().delete(produit);
+		
+	}
+	
+	
+	
 //	@Transactional
 //	public Panier ajouterProduitAuPanier(Produit p, Long idPanier) {
 //		

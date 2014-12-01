@@ -19,8 +19,6 @@ public class Famille {
 	private String libelle;
 	
 	private String couleur ;
-	
-
 
 	private Societe societe ;
 

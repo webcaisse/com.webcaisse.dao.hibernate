@@ -42,7 +42,7 @@ public class Prix {
 		this.prix = prix;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="id_produit")
 	public Produit getProduit() {
 		return produit;
