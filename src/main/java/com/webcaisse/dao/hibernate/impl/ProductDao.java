@@ -63,13 +63,13 @@ public class ProductDao  implements IProductDao{
 	 
 	
 	@Transactional
-	public Long ajouterProduit(Produit p, Long idFamilly) {
+	public void ajouterProduit(Produit p, Long idFamilly) {
 		
 		
 	     Famille famille = (Famille) sessionFactory.getCurrentSession().load(Famille.class, idFamilly) ;
          p.setFamille(famille);
          
-		return (Long)sessionFactory.getCurrentSession().save(p);
+	    sessionFactory.getCurrentSession().save(p);
 	}
 
 
