@@ -2,6 +2,7 @@ package com.webcaisse.dao.hibernate.impl;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +17,7 @@ public class AuthentificationDao implements IAuthentification {
 
 	@Transactional
 	public User getAuthentification(String userName, String password, String codeSociete) {
-//		Session session = ((SessionFactory) sessionFactory.getCurrentSession())
-//				.openSession();
-//
-//		Query req = session.createQuery("select username,password,s.code_societe from users u inner join societe s on u.id_societe=s.id_societe");
-//		session.beginTransaction();
-//
-//		return req.list();
+
 		
 		return (User) sessionFactory.getCurrentSession().createCriteria(User.class)
 		.add(Restrictions.eq("nom", userName))
@@ -32,4 +27,16 @@ public class AuthentificationDao implements IAuthentification {
 
 	}
 
+	@Transactional
+	public User finByUserName(String userName) {
+		
+		 Query req = sessionFactory.getCurrentSession().createQuery("select u from User u where u.username=:username " ) ;
+		 req.setParameter("username", userName) ;
+		
+		 return  (User) req.uniqueResult() ;
+	
+	}
+
+	
+	
 }

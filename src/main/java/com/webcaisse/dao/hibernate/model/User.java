@@ -17,6 +17,7 @@ public class User {
 
 	private Long id;
 	
+
 	private Boolean actif;
 	
 	private String adresse;
@@ -24,6 +25,10 @@ public class User {
 	private String codeAcces ;
 
 	private String nom ;
+	
+	private String password ;
+	
+	private String username;
 	
 	private String prenom ;
 	
@@ -78,7 +83,24 @@ public class User {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	@Column(name="username",nullable=true)
+	public String getUsername() {
+		return username;
+	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	@Column(name="password",nullable=true)
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 	@Column(name="prenom", nullable=true)
 	public String getPrenom() {
 		return prenom;
