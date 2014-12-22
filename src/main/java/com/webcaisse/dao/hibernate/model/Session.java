@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,11 +23,9 @@ public class Session {
 	
 	private Date dateFermeture ;
 	
-	private Date dataOuverture;
+	private Date dateOuverture;
 	
 	private Character etat;
-	
-	private Societe societe ;
 	
 	private User user ;
 
@@ -64,12 +61,12 @@ public class Session {
 	}
 
 	@Column(name="date_ouverture", nullable=true)
-	public Date getDataOuverture() {
-		return dataOuverture;
+	public Date getDateOuverture() {
+		return dateOuverture;
 	}
 
-	public void setDataOuverture(Date dataOuverture) {
-		this.dataOuverture = dataOuverture;
+	public void setDateOuverture(Date dateOuverture) {
+		this.dateOuverture = dateOuverture;
 	}
 
 	@Column(name="etat", nullable=true)
@@ -79,16 +76,6 @@ public class Session {
 
 	public void setEtat(Character etat) {
 		this.etat = etat;
-	}
-
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_societe")
-	public Societe getSociete() {
-		return societe;
-	}
-
-	public void setSociete(Societe societe) {
-		this.societe = societe;
 	}
 
 	@OneToOne(fetch=FetchType.EAGER)

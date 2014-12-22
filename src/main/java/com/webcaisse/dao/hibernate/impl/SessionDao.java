@@ -1,5 +1,6 @@
 package com.webcaisse.dao.hibernate.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -14,10 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webcaisse.dao.hibernate.ISessionDao;
 import com.webcaisse.dao.hibernate.model.Commande;
 import com.webcaisse.dao.hibernate.model.Session;
+import com.webcaisse.dao.hibernate.model.User;
 
 public class SessionDao implements ISessionDao {
 	@Resource(name="sessionFactory")
 	SessionFactory sessionFactory;
+	private static SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
 	
 	@Transactional
 	public Session loadSessionById(Long sessionId) {
@@ -50,6 +53,35 @@ public class SessionDao implements ISessionDao {
 	
 	
 	}
+	
+	@Transactional
+	public  Session getSessionByUserIdAndDate(Long idUser, Date date){
+	//	String to_date  = sdf.format(date);
+		Query req = sessionFactory.getCurrentSession().createQuery("select s from Session s where s.user.id=:id and s.dateOuverture=:date" ) ;
+		 req.setParameter("id", idUser);
+		 req.setParameter("date", date);
+		
+		
+		return (Session) req.uniqueResult();
+	}
+
+    @Transactional
+    public Long creerSession(Long idUser, Date date) {
+    	
+    	Session session = new Session() ;
+    	User user = new User() ;
+    	user.setId(idUser);
+    	session.setUser(user);
+    	session.setDateOuverture(date);
+
+    	return (Long) sessionFactory.getCurrentSession().save(session) ;
+	}
+
+
+	
+
+
+	
 	
 	
 
