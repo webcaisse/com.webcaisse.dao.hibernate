@@ -14,5 +14,6 @@ public interface ISessionDao {
 	public List<Commande> rechercherCommandeParDate(Long idSociete ,Date dateCommade) ;
 	public Session getSessionByUserIdAndDate(Long idUser,Date date) ;
 	public Long creerSession(Long idUser,Date date) ;
+	public void updateSession(Session session);
 	
 }

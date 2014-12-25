@@ -66,6 +66,7 @@ public class SessionDao implements ISessionDao {
 		return (Session) req.uniqueResult();
 	}
 
+	
     @Transactional
     public Long creerSession(Long idUser, Date date) {
     	
@@ -79,6 +80,13 @@ public class SessionDao implements ISessionDao {
 	}
 
 
+    @Transactional
+    
+   public void updateSession(Session session){
+    	sessionFactory.getCurrentSession().update(session); 
+    	
+    }
+    
     
 	
 
