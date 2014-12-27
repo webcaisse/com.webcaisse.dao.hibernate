@@ -55,15 +55,15 @@ public class SessionDao implements ISessionDao {
 	}
 	
 	@Transactional
-	public  Session getSessionByUserIdAndDate(Long idUser, Date date){
+	public  List<Session> getSessionByUserIdAndDate(Long idUser, Date date){
 //		String to_date  = sdf.format(date);
 		Query req = sessionFactory.getCurrentSession().createQuery("select s from Session s where s.user.id=:id "
-				+ " and day(s.dateOuverture) = day(:date) and month(s.dateOuverture) = month(:date) and year(s.dateOuverture) = year(:date) " ) ;
+				+ " and day(s.dateOuver0ture) = day(:date) and month(s.dateOuverture) = month(:date) and year(s.dateOuverture) = year(:date) and s.etat='O'" ) ;
 		 req.setParameter("id", idUser);
 		 req.setParameter("date", date);
 		
 		
-		return (Session) req.uniqueResult();
+		return req.list();
 	}
 
 	
@@ -75,24 +75,15 @@ public class SessionDao implements ISessionDao {
     	user.setId(idUser);
     	session.setUser(user);
     	session.setDateOuverture(date);
+    	session.setEtat('O');
 
     	return (Long) sessionFactory.getCurrentSession().save(session) ;
 	}
 
-
-    @Transactional
-    
+   @Transactional
    public void updateSession(Session session){
     	sessionFactory.getCurrentSession().update(session); 
     	
     }
-    
-    
-	
-
-
-	
-	
-	
 
 }
