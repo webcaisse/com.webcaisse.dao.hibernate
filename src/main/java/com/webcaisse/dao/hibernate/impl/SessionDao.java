@@ -58,7 +58,7 @@ public class SessionDao implements ISessionDao {
 	public  List<Session> getSessionByUserIdAndDate(Long idUser, Date date){
 //		String to_date  = sdf.format(date);
 		Query req = sessionFactory.getCurrentSession().createQuery("select s from Session s where s.user.id=:id "
-				+ " and day(s.dateOuver0ture) = day(:date) and month(s.dateOuverture) = month(:date) and year(s.dateOuverture) = year(:date) and s.etat='O'" ) ;
+				+ " and day(s.dateOuverture) = day(:date) and month(s.dateOuverture) = month(:date) and year(s.dateOuverture) = year(:date) and s.etat='O'" ) ;
 		 req.setParameter("id", idUser);
 		 req.setParameter("date", date);
 		

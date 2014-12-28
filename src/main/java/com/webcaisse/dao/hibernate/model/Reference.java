@@ -18,7 +18,7 @@ public class Reference {
 
 	private Long id;
 	
-	private Long idSociete;
+	private Societe societe;
 	
 	private Date dateCrea;
 	
@@ -42,12 +42,12 @@ public class Reference {
 
 	@ManyToOne
 	@JoinColumn(name="id_societe")	
-	public Long getIdSociete() {
-		return idSociete;
+	public Societe getSociete() {
+		return societe;
 	}
 
-	public void setIdSociete(Long idSociete) {
-		this.idSociete = idSociete;
+	public void setSociete(Societe societe) {
+		this.societe = societe;
 	}
 
 	@Column(name="date_crea", nullable=true)
