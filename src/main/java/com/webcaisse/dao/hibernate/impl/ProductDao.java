@@ -63,12 +63,8 @@ public class ProductDao  implements IProductDao{
 	 
 	
 	@Transactional
-	public void ajouterProduit(Produit p, Long idFamilly) {
-		
-		
-	     Famille famille = (Famille) sessionFactory.getCurrentSession().load(Famille.class, idFamilly) ;
-         p.setFamille(famille);
-         
+	public void ajouterProduit(Produit p) {
+		    
 	    sessionFactory.getCurrentSession().save(p);
 	}
 
@@ -76,12 +72,21 @@ public class ProductDao  implements IProductDao{
 	@Transactional
 	public void supprimerProduit(Long idProduit) {
 		
-		
 		Produit produit = (Produit) sessionFactory.getCurrentSession().get(Produit.class, idProduit) ;
 		sessionFactory.getCurrentSession().delete(produit);
 		
 	}
 	
+	@Transactional
+	public void updateProduit(Produit p) {
+		
+		Produit produit = (Produit) sessionFactory.getCurrentSession().get(Produit.class, p.getId()) ;
+		produit.setLibelle(p.getLibelle());
+		produit.setCode(p.getCode());
+		    
+	    sessionFactory.getCurrentSession().update(produit);
+	}
+
 	
 	
 //	@Transactional

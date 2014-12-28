@@ -10,11 +10,12 @@ import com.webcaisse.dao.hibernate.model.Produit;
 public interface IProductDao {
 
 	public List<Famille> getFamillies ( Long idSociete);
-	public void ajouterProduit(Produit p, Long idFamilly) ;
+	public void ajouterProduit(Produit p) ;
 	public List<Produit> getProductsByFamilly (Long familleId);
 	public Produit loadProductById (Long produitId);
 	//public Panier ajouterProduitAuPanier(Produit p, Long idPanier) ;
 	public Long sauvegarderCommande(Commande  commande) ;
 	public void supprimerProduit(Long idProduit);
+	public void updateProduit(Produit p) ;
 	
 }

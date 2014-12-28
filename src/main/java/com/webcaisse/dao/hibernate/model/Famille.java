@@ -1,5 +1,6 @@
 package com.webcaisse.dao.hibernate.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Famille {
 		this.libelle = libelle;
 	}
 
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="id_societe")
 	public Societe getSociete() {
 		return societe;
