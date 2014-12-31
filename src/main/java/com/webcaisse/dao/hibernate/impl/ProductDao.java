@@ -87,21 +87,41 @@ public class ProductDao  implements IProductDao{
 	    sessionFactory.getCurrentSession().update(produit);
 	}
 
-	
-	
-//	@Transactional
-//	public Panier ajouterProduitAuPanier(Produit p, Long idPanier) {
-//		
-//		Panier panier = (Panier) sessionFactory.getCurrentSession().load(Panier.class,idPanier) ;
-//		p.getLibelle();
-//		p.getPrix();
-//		panier.getProduits().add(p) ;
-//		sessionFactory.getCurrentSession().save(panier) ;
-//		
-//		
-//		return panier ;
-//	}
-	 
+   	
+	@Transactional
+	public void ajouterFamille(Famille famille) {
+		    
+	    sessionFactory.getCurrentSession().save(famille);
+	}
+
+    @Transactional
+	public void supprimerFamille(Long idFamille) {
+
+		Famille famille= (Famille) sessionFactory.getCurrentSession().get(Famille.class, idFamille) ;
+				
+		sessionFactory.getCurrentSession().delete(famille);
+		
+}
+
+@Transactional
+	public void updateFamille(Famille f) {
+		
+		Famille famille= (Famille) sessionFactory.getCurrentSession().get(Famille.class, f.getId()) ;
+		famille.setLibelle(f.getLibelle());
+		famille.setCouleur(f.getCouleur());
+		sessionFactory.getCurrentSession().update(famille);
+		
+	}
+@Transactional
+
+	public Famille loadFamilleById(Long idFamille) {
+		
+	Query req = sessionFactory.getCurrentSession().createQuery("select f from Famille f where f.id=:id " ) ;
+	 req.setParameter("id", idFamille) ;
+	 return (Famille) req.uniqueResult() ;
+	}
+
+
 	
 	
 	 

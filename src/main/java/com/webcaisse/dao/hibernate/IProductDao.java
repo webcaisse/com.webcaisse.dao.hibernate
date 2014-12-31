@@ -13,9 +13,12 @@ public interface IProductDao {
 	public void ajouterProduit(Produit p) ;
 	public List<Produit> getProductsByFamilly (Long familleId);
 	public Produit loadProductById (Long produitId);
+	public Famille loadFamilleById(Long IdFamille ) ;
 	//public Panier ajouterProduitAuPanier(Produit p, Long idPanier) ;
 	public Long sauvegarderCommande(Commande  commande) ;
 	public void supprimerProduit(Long idProduit);
 	public void updateProduit(Produit p) ;
-	
+	public void ajouterFamille(Famille famille) ;
+	public void supprimerFamille(Long idFamille) ;
+	public void updateFamille(Famille f) ;
 }
