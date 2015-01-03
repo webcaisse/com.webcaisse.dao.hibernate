@@ -5,7 +5,9 @@ import com.webcaisse.dao.hibernate.model.Reference;
 public interface IParametreDao {
 
 	
-	public void sauvgarderParametre (Reference reference) ;
+	void sauvgarderParametre (Reference reference) ;
+	
+	Reference getReferenceByName (String referenceName);
 	
 	
 }

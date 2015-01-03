@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webcaisse.dao.hibernate.IClient;
 import com.webcaisse.dao.hibernate.model.Client;
-import com.webcaisse.dao.hibernate.model.Famille;
 
 public class ClientDao implements IClient {
 
