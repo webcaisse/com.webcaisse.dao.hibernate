@@ -6,14 +6,15 @@
       http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context.xsd">
-	<context:annotation-config/>
-	
+	<context:annotation-config />
+
 	<context:component-scan base-package="com.webcaisse.dao.hibernate.impl" />
- 
- <bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao"/>
- <bean class="com.webcaisse.dao.hibernate.impl.SocieteDao" name="societeDao"/>
- <bean class="com.webcaisse.dao.hibernate.impl.SessionDao" name="sessionDao"/>
-  <bean class="com.webcaisse.dao.hibernate.impl.ParametreDao" name="parametreDao"/>
- <bean class="com.webcaisse.dao.hibernate.impl.ClientDao" name="clientDao"/>
-  <bean class="com.webcaisse.dao.hibernate.impl.AuthentificationDao" name="authentificationDao"></bean>
- </beans>
+
+	<bean class="com.webcaisse.dao.hibernate.impl.ProductDao" name="productDao" />
+	<bean class="com.webcaisse.dao.hibernate.impl.SocieteDao" name="societeDao" />
+	<bean class="com.webcaisse.dao.hibernate.impl.SessionDao" name="sessionDao" />
+	<bean class="com.webcaisse.dao.hibernate.impl.ParametreDao" name="parametreDao" />
+	<bean class="com.webcaisse.dao.hibernate.impl.ClientDao" name="clientDao" />
+	<bean class="com.webcaisse.dao.hibernate.impl.AuthentificationDao"	name="authentificationDao"/>
+	<bean class="com.webcaisse.dao.hibernate.impl.UserDaoImpl" name="userDao"/>
+</beans>

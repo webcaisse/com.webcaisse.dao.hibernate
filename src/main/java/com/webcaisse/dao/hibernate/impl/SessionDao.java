@@ -1,6 +1,5 @@
 package com.webcaisse.dao.hibernate.impl;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,6 @@ import com.webcaisse.dao.hibernate.model.User;
 public class SessionDao implements ISessionDao {
 	@Resource(name="sessionFactory")
 	SessionFactory sessionFactory;
-	private static SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
 	
 	@Transactional
 	public Session loadSessionById(Long sessionId) {

@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webcaisse.dao.hibernate.ISocieteDao;
-import com.webcaisse.dao.hibernate.model.Session;
 import com.webcaisse.dao.hibernate.model.Societe;
 
 

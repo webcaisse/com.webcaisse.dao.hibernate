@@ -1,6 +1,5 @@
 package com.webcaisse.dao.hibernate.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +34,8 @@ public class User {
 	private String telephone ;
 
 	private Societe societe ;
+	
+	private Profil profil;
 	
 	@Id
 	@GenericGenerator(name="id_user" , strategy="increment")
@@ -127,6 +128,16 @@ public class User {
 
 	public void setSociete(Societe societe) {
 		this.societe = societe;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="profil_id")
+	public Profil getProfil() {
+		return profil;
+	}
+
+	public void setProfil(Profil profil) {
+		this.profil = profil;
 	}
 	
 }
