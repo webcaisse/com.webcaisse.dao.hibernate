@@ -120,7 +120,7 @@ public class User {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="id_societe", insertable=false, updatable=false)
+	@JoinColumn(name="id_societe")
 	public Societe getSociete() {
 		return societe;
 	}
