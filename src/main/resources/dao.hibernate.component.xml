@@ -17,4 +17,5 @@
 	<bean class="com.webcaisse.dao.hibernate.impl.ClientDao" name="clientDao" />
 	<bean class="com.webcaisse.dao.hibernate.impl.AuthentificationDao"	name="authentificationDao"/>
 	<bean class="com.webcaisse.dao.hibernate.impl.UserDaoImpl" name="userDao"/>
+	<bean class="com.webcaisse.dao.hibernate.impl.LivreurDao" name="livreurDao"/>
 </beans>
