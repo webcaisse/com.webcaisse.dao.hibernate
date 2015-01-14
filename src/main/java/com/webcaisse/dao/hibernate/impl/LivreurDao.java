@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webcaisse.dao.hibernate.ILivreurDao;
 import com.webcaisse.dao.hibernate.model.Livreur;
+
 import org.hibernate.Query;
 
 public class LivreurDao implements ILivreurDao{
@@ -34,4 +35,16 @@ public class LivreurDao implements ILivreurDao{
 		return query.list();
 	}
 
+	
+	@Transactional
+	public Livreur loadLivreurById(Long idLivreur) {
+		
+		Query query=sessionFactory.getCurrentSession().createQuery("select l from Livreur l where l.id=:x");
+		query.setParameter("x",idLivreur) ;
+		
+		
+		return (Livreur) query.uniqueResult();
+	}
+
+	
 }

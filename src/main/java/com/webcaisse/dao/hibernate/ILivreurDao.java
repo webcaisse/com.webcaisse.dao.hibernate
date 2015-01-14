@@ -10,5 +10,7 @@ public interface ILivreurDao {
 	
 	void sauvegarderLivreur (Livreur livreur) ;
 	public  List<Livreur> rechercherLivreur(Long idSociete) ;
+	public Livreur loadLivreurById(Long idLivreur) ;
+	
 
 }
