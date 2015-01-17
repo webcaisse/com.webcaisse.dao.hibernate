@@ -69,7 +69,7 @@ public class Commande {
 		this.id = id;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="id_client")
 	public Client getClient() {
 		return client;
