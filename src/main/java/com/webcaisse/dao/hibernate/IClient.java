@@ -13,4 +13,5 @@ public interface IClient {
 	public Client loadClientById(Long idClient) ;
 	public void supprimerClient(Long idClient) ;
 	public void updateClient(Client client) ;
+	public List<Client> autoCompleteClient (String param) ;
 }

@@ -66,4 +66,12 @@ public class ClientDao implements IClient {
 	  
 	
 }
+
+@Transactional
+public List<Client> autoCompleteClient(String param) {
+   
+	Query req = sessionFactory.getCurrentSession().createQuery("select c from Client c where c.telephone like :param"  ) ;
+	req.setParameter("param", "%"+param+"%");
+	 return req.list() ;
+}
 }
