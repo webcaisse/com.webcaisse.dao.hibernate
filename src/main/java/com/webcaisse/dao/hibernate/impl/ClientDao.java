@@ -25,53 +25,41 @@ public class ClientDao implements IClient {
 		return req.list();
 
 	}
-	
-	
+
 	@Transactional
-	public void ajouterClient(Client client )
-	{
-		
-		sessionFactory.getCurrentSession().save(client) ;
+	public void ajouterClient(Client client) {
+
+		sessionFactory.getCurrentSession().save(client);
 	}
 
-	
 	@Transactional
-	public Client loadClientById(Long idClient)
-	{
-		Query req = sessionFactory.getCurrentSession().createQuery("select c from Client c where c.id=:id " ) ;
-		 req.setParameter("id", idClient) ;
-		 return (Client) req.uniqueResult() ;
-		
-		
+	public Client loadClientById(Long idClient) {
+		Query req = sessionFactory.getCurrentSession().createQuery(
+				"select c from Client c where c.id=:id ");
+		req.setParameter("id", idClient);
+		return (Client) req.uniqueResult();
+
 	}
 
-@Transactional
+	@Transactional
 	public void supprimerClient(Long idClient) {
-		Client c= (Client) sessionFactory.getCurrentSession().load(Client.class, idClient) ;
+		Client c = (Client) sessionFactory.getCurrentSession().load(
+				Client.class, idClient);
 		sessionFactory.getCurrentSession().delete(c);
-		
-		
+
 	}
 
-@Transactional
-     public void updateClient(Client client) {
-	
-	Client c= (Client) sessionFactory.getCurrentSession().load(Client.class,client.getId()) ;
-	  c.setNom(client.getNom());
-	  c.setPrenom(client.getPrenom());
-	  c.setEmail(client.getEmail());
-	  c.setTelephone(client.getTelephone());
-	  sessionFactory.getCurrentSession().update(c);
-	  
-	  
-	
-}
+	@Transactional
+	public void updateClient(Client client) {
+		sessionFactory.getCurrentSession().saveOrUpdate(client);
+	}
 
-@Transactional
-public List<Client> autoCompleteClient(String param) {
-   
-	Query req = sessionFactory.getCurrentSession().createQuery("select c from Client c where c.telephone like :param"  ) ;
-	req.setParameter("param", "%"+param+"%");
-	 return req.list() ;
-}
+	@Transactional
+	public List<Client> autoCompleteClient(String param) {
+
+		Query req = sessionFactory.getCurrentSession().createQuery(
+				"select c from Client c where c.telephone like :param or nom like :param or prenom like :param");
+		req.setParameter("param", "%" + param + "%");
+		return req.list();
+	}
 }
