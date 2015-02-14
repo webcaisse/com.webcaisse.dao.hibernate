@@ -50,8 +50,6 @@ public class Commande {
 	
 	private Double regTicketRestau;
 	
-	private String etat ;
-	
 	private Livreur livreur  ;
 	
 	private EtatCommande etatCommande ;
@@ -209,16 +207,6 @@ public class Commande {
 	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
-	
-	public String getEtat() {
-		return etat;
-	}
-
-	@Column(name="etat", nullable=true)
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
-
 	
 	@ManyToOne
 	@JoinColumn(name="id_livreur")
