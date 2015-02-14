@@ -54,6 +54,9 @@ public class Commande {
 	
 	private Livreur livreur  ;
 	
+	private EtatCommande etatCommande ;
+	
+	
 
 	private List<LigneCommande> ligneCommandes;
 
@@ -226,6 +229,18 @@ public class Commande {
 	public void setLivreur(Livreur livreur) {
 		this.livreur = livreur;
 	}
+
+	@ManyToOne
+	@JoinColumn(name="id_etat")
+	public EtatCommande getEtatCommande() {
+		return etatCommande;
+	}
+
+	public void setEtatCommande(EtatCommande etatCommande) {
+		this.etatCommande = etatCommande;
+	}
+	
+	
 	
 	
 }

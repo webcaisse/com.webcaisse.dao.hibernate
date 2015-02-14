@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webcaisse.dao.hibernate.ICommandeDao;
 import com.webcaisse.dao.hibernate.model.Client;
 import com.webcaisse.dao.hibernate.model.Commande;
+import com.webcaisse.dao.hibernate.model.EtatCommande;
+import com.webcaisse.dao.hibernate.model.Livreur;
 
 
 public class CommandeDao implements ICommandeDao {
@@ -35,6 +37,7 @@ public class CommandeDao implements ICommandeDao {
 		
 		Commande c= (Commande) sessionFactory.getCurrentSession().load(Commande.class,commande.getId()) ;
 		  c.setLivreur(commande.getLivreur());
+		  c.setEtatCommande(commande.getEtatCommande());
 		 
 		  sessionFactory.getCurrentSession().update(c);
 		
@@ -47,5 +50,24 @@ public class CommandeDao implements ICommandeDao {
 		req.setParameter("id", idLivreur) ;
 		return req.list() ;
 	}
+
+   @Transactional
+	public List<Commande> getCommandesByEtat(String etatCommande) {
+		
+		Query req = sessionFactory.getCurrentSession().createQuery(" select c from Commande c where c.etatCommande.code=:code") ;
+		req.setParameter("code", etatCommande) ;
+		return req.list() ;
+		
+	}
+
+   @Transactional
+public EtatCommande loadEtatCommandeByCode(String code) {
+	
+	Query query=sessionFactory.getCurrentSession().createQuery("select e from EtatCommande e where e.code=:x");
+	query.setParameter("x",code) ;
+	
+	
+	return (EtatCommande) query.uniqueResult();
+}
 
 }
