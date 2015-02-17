@@ -36,6 +36,7 @@ public class CommandeDao implements ICommandeDao {
 	public void updateCommande(Commande commande) {
 		
 		Commande c= (Commande) sessionFactory.getCurrentSession().load(Commande.class,commande.getId()) ;
+		  c.setMode(commande.getMode());
 		  c.setLivreur(commande.getLivreur());
 		  c.setEtatCommande(commande.getEtatCommande());
 		 
