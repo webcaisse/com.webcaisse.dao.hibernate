@@ -19,17 +19,16 @@ public class ClientDao implements IClient {
 	@Transactional
 	public List<Client> rechercherClient(Long idSociete) {
 
-		Query req = sessionFactory.getCurrentSession().createQuery(
-				"select c from Client c where c.societe.id=:x ");
+		Query req = sessionFactory.getCurrentSession().createQuery("select c from Client c where c.societe.id=:x ");
 		req.setParameter("x", idSociete);
 		return req.list();
 
 	}
 
 	@Transactional
-	public void ajouterClient(Client client) {
+	public Long ajouterClient(Client client) {
 
-		sessionFactory.getCurrentSession().save(client);
+		return (Long) sessionFactory.getCurrentSession().save(client);
 	}
 
 	@Transactional

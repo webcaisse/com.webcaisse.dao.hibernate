@@ -9,7 +9,7 @@ public interface IClient {
 
 	
 	public  List<Client> rechercherClient(Long idSociete) ;
-	public void ajouterClient(Client client );
+	public Long ajouterClient(Client client );
 	public Client loadClientById(Long idClient) ;
 	public void supprimerClient(Long idClient) ;
 	public void updateClient(Client client) ;
