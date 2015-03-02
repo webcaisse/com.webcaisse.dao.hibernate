@@ -9,11 +9,11 @@ public interface IParametreDao {
 
 	
 	void sauvgarderParametre (Reference reference) ;
-	
-	Reference getReferenceByName (String referenceName);
-	
+	public Reference getReferenceByName (String referenceName);
 	void sauvegarderUser (User user) ;
 	public  List<User> rechercherUser(Long idSociete) ;
+	public List<Reference> getHeaderReferences (Long idSociete) ;
+	public List<Reference> getFootersReferences (Long idSociete ) ;
 	
 	
 }

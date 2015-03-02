@@ -50,6 +50,30 @@ public class ParametreDao implements IParametreDao {
 		
 	}
 
+	@Transactional
+	public List<Reference> getAllReference(Long idSociete) {
+		Query req = sessionFactory.getCurrentSession().createQuery("select r from Reference r where r.societe.id=:x ");
+		req.setParameter("x", idSociete);
+		return req.list();
+	}
+
+	@Transactional
+	public List<Reference> getHeaderReferences(Long idSociete) {
+		Query req = sessionFactory.getCurrentSession().createQuery("select r from Reference r where r.societe.id=:x  and r.nomParametre LIKE :nomRef");
+		req.setParameter("x", idSociete);
+		req.setParameter("nomRef", "REF_ENTETE%");
+		return req.list();
+		
+	}
+
+	@Transactional
+	public List<Reference> getFootersReferences(Long idSociete) {
+		Query req = sessionFactory.getCurrentSession().createQuery("select r from Reference r where r.societe.id=:x  and r.nomParametre LIKE :nomRef");
+		req.setParameter("x", idSociete);
+		req.setParameter("nomRef", "REF_PIED%");
+		return req.list();
+	}
+
 	
 	
 }

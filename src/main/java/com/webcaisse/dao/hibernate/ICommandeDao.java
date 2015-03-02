@@ -13,5 +13,6 @@ public interface ICommandeDao {
 	public List<Commande> getCommandesByEtat(String  etatCommande) ;
 	public EtatCommande loadEtatCommandeByCode(String code) ;
 	
+	
 
 }
