@@ -30,7 +30,7 @@ public class SessionDao implements ISessionDao {
 	
 	@Transactional
 	public List<Commande> rechercherCommande(Long idSession) {
-		 Query req = sessionFactory.getCurrentSession().createQuery("select c from Commande c where c.session.id=:x " ) ;
+		 Query req = sessionFactory.getCurrentSession().createQuery("select c from Commande c where c.session.id=:x order by c.dateCommande desc" ) ;
 		    req.setParameter("x", idSession) ;
 		    return req.list() ;
 	
